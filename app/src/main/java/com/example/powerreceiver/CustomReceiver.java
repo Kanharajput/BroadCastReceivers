@@ -15,6 +15,8 @@ import android.widget.Toast;
 */
 
 public class CustomReceiver extends BroadcastReceiver {
+    // both should have the same action string to get the Broadcast
+    private static final String ACTION_CUSTOM_BROADCAST = BuildConfig.APPLICATION_ID + ".ACTION_CUSTOM_BROADCAST";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -31,6 +33,10 @@ public class CustomReceiver extends BroadcastReceiver {
 
                 case Intent.ACTION_POWER_DISCONNECTED :
                     action = "Plug Out";
+                    break;
+
+                case ACTION_CUSTOM_BROADCAST:
+                    action = "Custom Broadcast received";
                     break;
 
                 default:
