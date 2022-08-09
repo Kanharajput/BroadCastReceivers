@@ -8,6 +8,8 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     // create the object of CustomeReceiver
@@ -48,7 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendCustomBroadCast(View view) {
         Intent customBroadcastIntent = new Intent(ACTION_CUSTOM_BROADCAST);         // Initialising the intent with our define action
+        customBroadcastIntent.putExtra("rand_btw_1to20",random_value());       // passing the extra
         // it is used for sending the broadcast within the app
         LocalBroadcastManager.getInstance(this).sendBroadcast(customBroadcastIntent);
+    }
+
+    private int random_value() {
+        Random randValueGenerator  = new Random();
+        return randValueGenerator.nextInt(21);       // returning random value between 0 to 20 inclusively
     }
 }

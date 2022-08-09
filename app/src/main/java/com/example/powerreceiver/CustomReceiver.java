@@ -29,28 +29,37 @@ public class CustomReceiver extends BroadcastReceiver {
                 // member varible of Intent class -> public static final String ACTION_POWER_CONNECTED = "android.intent.action.ACTION_POWER_CONNECTED";
                 case Intent.ACTION_POWER_CONNECTED:
                     action = "Charging...";
+                    displayToast(context,action);
                     break;
 
                 case Intent.ACTION_POWER_DISCONNECTED :
                     action = "Plug Out";
+                    displayToast(context,action);
                     break;
 
                 case ACTION_CUSTOM_BROADCAST:
-                    action = "Custom Broadcast received";
+                    // action = "Custom Broadcast received";
+                    int value = intent.getIntExtra("rand_btw_1to20",0);
+                    int square_value = value*value;                        // square of value
+                    String square_value_str = String.valueOf(square_value);          // convert it to string
+                    displayToast(context,square_value_str);                          // display the toast
                     break;
 
                 case Intent.ACTION_HEADSET_PLUG:
                     action = "Headset Plugged in";
+                    displayToast(context,action);
                     break;
 
                 default:
                     action = "unknown action";
             }
-
-            Toast toast = new Toast(context);
-            toast.setText(action);
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.show();
         }
+    }
+
+    private void displayToast(Context context,String message) {
+        Toast toast = new Toast(context);
+        toast.setText(message);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.show();
     }
 }
