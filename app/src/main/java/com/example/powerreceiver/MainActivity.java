@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         // this are the two filter for which we receive a broadcast
         intentFilter.addAction(Intent.ACTION_POWER_CONNECTED);
         intentFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+        // filters for headphone
+        intentFilter.addAction(Intent.ACTION_HEADSET_PLUG);
 
         // registering the receiver
         this.registerReceiver(mReceiver,intentFilter);

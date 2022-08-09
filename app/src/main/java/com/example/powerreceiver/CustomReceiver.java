@@ -39,6 +39,10 @@ public class CustomReceiver extends BroadcastReceiver {
                     action = "Custom Broadcast received";
                     break;
 
+                case Intent.ACTION_HEADSET_PLUG:
+                    action = "Headset Plugged in";
+                    break;
+
                 default:
                     action = "unknown action";
             }
